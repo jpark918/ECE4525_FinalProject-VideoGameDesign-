@@ -178,10 +178,16 @@ function draw() {
     //text("THIS GAME IS SCUFFED AF", 0, 200);
     text("NAMEOFGAME is a rhythm game that tests the player's", 5, 15);
     text("ability to match button presses at a certain time.", 5, 30);
+    text("Failure to time button presses will slowly bring", 5, 45);
+    text("your score down until you lose. The game will",  5, 60);
+    text("only allow a certain amount of misses in a certain", 5, 75);
+    text("time frame before you lose. You can recover", 5, 90);
+    text("your health and prevent loss by timing button", 5, 105);
+    text("presses.", 5, 120);
     //text("This platformer/music game?? will be created by", 0, 20);
     // text("Daniel and Jihoon", 0, 40);
-    text("Controls: Use SDFJKL keys to hit the note at the correct", 5, 180);
-    text("timing", 5, 195);
+    text("Controls: Use ASDJKL keys to hit the note at the correct", 5, 180);
+    text("timing in order to score points.", 5, 195);
     text("Return", 340, 380);
     //mouseClicked();
     if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
