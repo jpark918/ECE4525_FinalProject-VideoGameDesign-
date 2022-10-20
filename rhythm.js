@@ -1,3 +1,38 @@
+class musicnote {
+  constructor() {
+    this.x;
+    this.y;
+  }
+  draweighth1() {
+    image(images[0])
+    //images.push(get(0,0,width,height));
+  }
+  draweighth2() {
+    image(images[2], this.x)
+    //images.push(get(0,0,width,height));
+  }
+  drawquarter1() {
+    strokeWeight(0);
+    rect(this.x, this.y, 10, 170);
+    push();
+    translate(100, 300);
+    rotate(-10);
+    ellipse(this.x - 123, this.x - 135, 90, 70);
+    pop();
+    //images.push(get(0,0,width,height));
+  }
+  drawquarter2() {
+    strokeWeight(0);
+    rect(this.x, this.y, 10, 170);
+    push();
+    translate(100, 300);
+    rotate(-10);
+    ellipse(this.x - 123, this.x - 135, 90, 70);
+    pop();
+    //images.push(get(0,0,width,height));
+  }
+}
+
 class MenuScreenState {
   constructor() {
     this.x = 200;
@@ -147,6 +182,9 @@ var playgame;
 var keyArray = [];
 var c = [];
 var index = 0;
+var images = [new musicnote, new musicnote];
+var eighth;
+var quarter;
 
 var mouseClicked = function () {
   target.x = mouseX;
@@ -176,6 +214,34 @@ function setup() {
   start = 0;
   instruction = 0;
   playgame = 0;
+
+
+  rect(129, 130, 10, 170);
+  rect(329, 130, 10, 170);
+  push();
+  translate(100, 300);
+  rotate(-10);
+  ellipse(6, -5, 90, 70);
+  pop();
+  push();
+  translate(300, 300);
+  rotate(-10);
+  ellipse(6, -5, 90, 70);
+  pop();
+  rect(129, 130, 210, 30);
+  eighth = get(0, 0, width, height);
+  background(0);
+  rect(129, 130, 10, 170);
+  push();
+  translate(100, 300);
+  rotate(-10);
+  ellipse(6, -5, 90, 70);
+  pop();
+  quarter = get(0, 0, width, height);
+  for (var i = 0; i < 2; i++) {
+    images.push(eighth);
+    images.push(quarter);
+  }
 }
 
 function draw() {
@@ -215,7 +281,7 @@ function draw() {
     text("NAMEOFGAME is a rhythm game that tests the player's", 5, 15);
     text("ability to match button presses at a certain time.", 5, 30);
     text("Failure to time button presses will slowly bring", 5, 45);
-    text("your score down until you lose. The game will",  5, 60);
+    text("your score down until you lose. The game will", 5, 60);
     text("only allow a certain amount of misses in a certain", 5, 75);
     text("time frame before you lose. You can recover", 5, 90);
     text("your health and prevent loss by timing button", 5, 105);
@@ -226,6 +292,20 @@ function draw() {
     text("timing in order to score points.", 5, 195);
     text("Return", 340, 380);
     //mouseClicked();
+    //spkr1
+    strokeWeight(1);
+    rect(100, 300, 30, 50);
+    circle(115, 314, 20);
+    circle(115, 338, 20);
+    for (var i = 0; i < images.length; i++) {
+      //images[0].eighth();
+      image(images[0], 115, 314, 130, 329);
+    }
+    //spkr 2
+    rect(260, 300, 30, 50);
+    circle(275, 314, 20);
+    circle(275, 338, 20);
+
     if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
       start = 0;
     }
