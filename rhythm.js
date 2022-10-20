@@ -2,60 +2,90 @@ class MenuScreenState {
   constructor() {
     this.x = 200;
     this.y = 150;
+    this.a = 0;
+    this.s = 0;
+    this.d = 0;
+    this.j = 0;
+    this.j = 0;
+    this.l = 0;
   }
   execute(me) {
-    if (keyArray[65] === 1) { //a
+    if (keyArray[65] === 1 && this.a == 0) { //a
       fill(150);
       circle(this.x - 170, this.y, 40);
       addCircle(this.x - 170, this.y);
+      this.a = 1;
     }
     else {
-      fill(225);
+      if (keyArray[65] === 0) {
+        this.a = 0;
+      }
+      fill(255);
       circle(this.x - 170, this.y, 40);
     }
-    if (keyArray[83] === 1) {
+    if (keyArray[83] === 1 && this.s == 0) {
       fill(150);
       circle(this.x - 100, this.y, 40);
       addCircle(this.x - 100, this.y);
+      this.s = 1;
     }
     else {
-      fill(225);
+      if (keyArray[83] === 0) {
+        this.s = 0;
+      }
+      fill(255);
       circle(this.x - 100, this.y, 40);
     }
-    if (keyArray[68] === 1) {
+    if (keyArray[68] === 1 && this.d == 0) {
       fill(150);
       circle(this.x - 30, this.y, 40);
       addCircle(this.x - 30, this.y);
+      this.d = 1;
     }
     else {
-      fill(225);
+      if (keyArray[68] === 0) {
+        this.d = 0;
+      }
+      fill(255);
       circle(this.x - 30, this.y, 40)
     }
-    if (keyArray[74] === 1) { //j
+    if (keyArray[74] === 1 && this.j == 0) { //j
       fill(150);
       circle(this.x + 30, this.y, 40);
       addCircle(this.x + 30, this.y);
+      this.j = 1;
     }
     else {
-      fill(225);
+      if (keyArray[74] === 0) {
+        this.j = 0;
+      }
+      fill(255);
       circle(this.x + 30, this.y, 40);
     }
-    if (keyArray[75] === 1) { //k
+    if (keyArray[75] === 1 && this.k == 0) { //k
       fill(150);
       circle(this.x + 100, this.y, 40);
       addCircle(this.x + 100, this.y);
+      this.k = 1;
     }
     else {
-      fill(225);
+      if (keyArray[75] === 0) {
+        this.k = 0;
+      }
+      fill(255);
       circle(this.x + 100, this.y, 40);
     }
-    if (keyArray[76] === 1) { //l
+    if (keyArray[76] === 1 && this.l == 0) { //l
       fill(150);
       circle(this.x + 170, this.y, 40);
       addCircle(this.x + 170, this.y);
+      this.l = 1;
     }
     else {
-      fill(225);
+      if (keyArray[76] === 0) {
+        this.l = 0;
+      }
+      fill(255);
       circle(this.x + 170, this.y, 40)
     }
     fill(0);
@@ -77,6 +107,7 @@ class expandCircleObj {
     this.red = r;
     this.green = g;
     this.blue = b;
+    this.draw = 1;
   }
 
   display() {
@@ -88,6 +119,9 @@ class expandCircleObj {
     this.red -= 5;
     this.blue -= 5;
     this.green -= 5;
+    if (this.red <= 10) {
+      this.draw = 0;
+    }
     pop();
   }
 
@@ -131,7 +165,7 @@ function keyReleased() {
 function addCircle(x, y) {
   c[index] = (new expandCircleObj(x, y, 255, 255, 255));
   index++;
-  if (index > 30) {
+  if (index > 60) {
     index = 0;
   }
 }
@@ -148,8 +182,10 @@ function draw() {
   background(0);
   if (start === 0) {
     for (var i = 0; i < c.length; i++) {
-      c[i].display();
-      c[i].update();
+      if (c[i].draw == 1) {
+        c[i].display();
+        c[i].update();
+      }
     }
     print(c.length);
     gamestate[0].execute(gamestate[0]);
