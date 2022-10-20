@@ -1,35 +1,21 @@
 class musicnote {
-  constructor() {
-    this.x;
-    this.y;
+  constructor(x, y, id) {
+    this.x = x;
+    this.y = y;
+    this.id = id;
   }
-  draweighth1() {
-    image(images[0])
-    //images.push(get(0,0,width,height));
+  draw() {
+    if (this.id == 0) {
+      eighth.resize(40, 40);
+      image(eighth, this.x - 10, this.y - 10);
+    }
+    else {
+      quarter.resize(40, 40);
+      image(quarter, this.x - 10, this.y - 10);
+    }
   }
-  draweighth2() {
-    image(images[2], this.x)
-    //images.push(get(0,0,width,height));
-  }
-  drawquarter1() {
-    strokeWeight(0);
-    rect(this.x, this.y, 10, 170);
-    push();
-    translate(100, 300);
-    rotate(-10);
-    ellipse(this.x - 123, this.x - 135, 90, 70);
-    pop();
-    //images.push(get(0,0,width,height));
-  }
-  drawquarter2() {
-    strokeWeight(0);
-    rect(this.x, this.y, 10, 170);
-    push();
-    translate(100, 300);
-    rotate(-10);
-    ellipse(this.x - 123, this.x - 135, 90, 70);
-    pop();
-    //images.push(get(0,0,width,height));
+  move() {
+    this.y -= 2;
   }
 }
 
@@ -185,6 +171,8 @@ var index = 0;
 var images = [new musicnote, new musicnote];
 var eighth;
 var quarter;
+var currFrameCount = 0;
+var count = 0;
 
 var mouseClicked = function () {
   target.x = mouseX;
@@ -215,7 +203,7 @@ function setup() {
   instruction = 0;
   playgame = 0;
 
-
+  noStroke();
   rect(129, 130, 10, 170);
   rect(329, 130, 10, 170);
   push();
@@ -238,10 +226,6 @@ function setup() {
   ellipse(6, -5, 90, 70);
   pop();
   quarter = get(0, 0, width, height);
-  for (var i = 0; i < 2; i++) {
-    images.push(eighth);
-    images.push(quarter);
-  }
 }
 
 function draw() {
@@ -253,7 +237,6 @@ function draw() {
         c[i].update();
       }
     }
-    print(c.length);
     gamestate[0].execute(gamestate[0]);
     fill(255)
     textSize(15);
@@ -276,36 +259,58 @@ function draw() {
     text("Instructions", 145, 300);
   }
   else if (start === 1) {
+    //mouseClicked();.
+    if (currFrameCount < frameCount - 60) {
+      switch (count) {
+        case 0:
+          images[count] = new musicnote(105, 114, 0);
+          break;
+        case 1:
+          images[count] = (new musicnote(275, 114, 1));
+          break;
+        case 2:
+          images[count] = (new musicnote(115, 114, 1));
+          break;
+        case 3:
+          images[count] = (new musicnote(265, 114, 0));
+          break;
+      }
+      count++;
+      if (count >= 4) {
+        count = 0;
+      }
+      currFrameCount = frameCount;
+    }
+    for (var i = 0; i < images.length; i++) {
+      images[i].draw();
+      images[i].move();
+    }
+    //spkr1
+    stroke(0);
+    strokeWeight(1);
+    rect(100, 100, 30, 50);
+    circle(115, 114, 20);
+    circle(115, 138, 20);
+    //spkr 2
+    rect(260, 100, 30, 50);
+    circle(275, 114, 20);
+    circle(275, 138, 20);
+    
     textSize(15);
     //text("THIS GAME IS SCUFFED AF", 0, 200);
-    text("NAMEOFGAME is a rhythm game that tests the player's", 5, 15);
-    text("ability to match button presses at a certain time.", 5, 30);
-    text("Failure to time button presses will slowly bring", 5, 45);
-    text("your score down until you lose. The game will", 5, 60);
-    text("only allow a certain amount of misses in a certain", 5, 75);
-    text("time frame before you lose. You can recover", 5, 90);
-    text("your health and prevent loss by timing button", 5, 105);
-    text("presses.", 5, 120);
+    text("NAMEOFGAME is a rhythm game that tests the player's", 5, 215);
+    text("ability to match button presses at a certain time.", 5, 230);
+    text("Failure to time button presses will slowly bring", 5, 245);
+    text("your score down until you lose. The game will", 5, 260);
+    text("only allow a certain amount of misses in a certain", 5, 275);
+    text("time frame before you lose. You can recover", 5, 290);
+    text("your health and prevent loss by timing button", 5, 305);
+    text("presses.", 5, 320);
     //text("This platformer/music game?? will be created by", 0, 20);
     // text("Daniel and Jihoon", 0, 40);
-    text("Controls: Use ASDJKL keys to hit the note at the correct", 5, 180);
-    text("timing in order to score points.", 5, 195);
+    text("Controls: Use ASDJKL keys to hit the note at the correct", 5, 350);
+    text("timing in order to score points.", 5, 365);
     text("Return", 340, 380);
-    //mouseClicked();
-    //spkr1
-    strokeWeight(1);
-    rect(100, 300, 30, 50);
-    circle(115, 314, 20);
-    circle(115, 338, 20);
-    for (var i = 0; i < images.length; i++) {
-      //images[0].eighth();
-      image(images[0], 115, 314, 130, 329);
-    }
-    //spkr 2
-    rect(260, 300, 30, 50);
-    circle(275, 314, 20);
-    circle(275, 338, 20);
-
     if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
       start = 0;
     }
