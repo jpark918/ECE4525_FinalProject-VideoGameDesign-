@@ -168,7 +168,7 @@ var playgame;
 var keyArray = [];
 var c = [];
 var index = 0;
-var images = [new musicnote, new musicnote];
+var images = [];
 var eighth;
 var quarter;
 var currFrameCount = 0;
@@ -260,6 +260,8 @@ function draw() {
   }
   else if (start === 1) {
     //mouseClicked();.
+    fill(255);
+    rect(135,50,120, 100);
     if (currFrameCount < frameCount - 60) {
       switch (count) {
         case 0:
@@ -285,6 +287,14 @@ function draw() {
       images[i].draw();
       images[i].move();
     }
+    strokeWeight(0);
+    fill(137,207,240);
+    ellipse(200,160, 270, 14);
+    fill(240,225,48)
+    ellipse(200,160,270,8)
+    fill(128,0,0);
+    ellipse(200,160,270,4);
+    fill(255)
     //spkr1
     stroke(0);
     strokeWeight(1);
@@ -296,6 +306,25 @@ function draw() {
     circle(275, 114, 20);
     circle(275, 138, 20);
     
+    fill(255)
+    square(200, 110, 20);
+    square(210, 130, 20);
+    square(190, 130, 20);
+    circle(185, 100, 15);
+    
+    line(186,107,190,130); //body
+    line(190,130,180,138); //left thigh
+    line(180,138,185,150); //left leg
+    line(190,130, 200,135); //right thigh;
+    line(200,135, 190,150); //right leg
+    line(186,107, 180,120); //left upper arm
+    line(180, 120, 185,130); //left lower arm
+    line(186, 107, 195, 120); //right upper arm
+    line(195, 120, 185, 125);
+    fill(255,0,0);
+    arc(185,100,15,15,PI+QUARTER_PI, HALF_PI - QUARTER_PI);
+    line(180,95, 195, 110);
+
     textSize(15);
     //text("THIS GAME IS SCUFFED AF", 0, 200);
     text("NAMEOFGAME is a rhythm game that tests the player's", 5, 215);
