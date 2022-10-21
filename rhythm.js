@@ -2,7 +2,7 @@
 //with the button press ripple animation in the main menu screen
 //as well as the music note sliding animation in the instruction screen.
 //Jihoon contributed with the main menu layout, instruction description,
-//and initial button press implementation. As well as
+//initial button press implementation,
 //code functionality as well as stickman picture and music note picture 
 //creation in the instruction screen.
 
