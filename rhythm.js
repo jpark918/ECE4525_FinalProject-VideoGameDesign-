@@ -6,7 +6,7 @@
 //code functionality as well as stickman picture and music note picture 
 //creation in the instruction screen.
 
-
+//music note for the animation in the instruction screen
 class musicnote {
   constructor(x, y, id) {
     this.x = x;
@@ -14,11 +14,11 @@ class musicnote {
     this.id = id;
   }
   draw() {
-    if (this.id == 0) {
+    if (this.id == 0) { //eighth note
       eighth.resize(40, 40);
       image(eighth, this.x - 10, this.y - 10);
     }
-    else {
+    else { //quarter note
       quarter.resize(40, 40);
       image(quarter, this.x - 10, this.y - 10);
     }
@@ -28,6 +28,8 @@ class musicnote {
   }
 }
 
+//the main menu screen state that contains the functionallity 
+//for the keys
 class MenuScreenState {
   constructor() {
     this.x = 200;
@@ -53,7 +55,7 @@ class MenuScreenState {
       fill(255);
       circle(this.x - 170, this.y, 40);
     }
-    if (keyArray[83] === 1 && this.s == 0) {
+    if (keyArray[83] === 1 && this.s == 0) { //s
       fill(150);
       circle(this.x - 100, this.y, 40);
       addCircle(this.x - 100, this.y);
@@ -66,7 +68,7 @@ class MenuScreenState {
       fill(255);
       circle(this.x - 100, this.y, 40);
     }
-    if (keyArray[68] === 1 && this.d == 0) {
+    if (keyArray[68] === 1 && this.d == 0) { //d
       fill(150);
       circle(this.x - 30, this.y, 40);
       addCircle(this.x - 30, this.y);
@@ -129,7 +131,7 @@ class MenuScreenState {
 }
 
 // Circle class that expands
-class expandCircleObj {
+class expandCircleObj { //ripple that expands when key is pressed
   constructor(x, y, r, g, b) {
     this.x = x;
     this.y = y;
@@ -137,13 +139,10 @@ class expandCircleObj {
     this.red = r;
     this.green = g;
     this.blue = b;
-    // this.red = random(0,255);
-    // this.green = random(0,255);
-    // this.blue = random(0,255);
     this.draw = 1;
   }
 
-  display() {
+  draw() {
     push();
     stroke(this.red, this.green, this.blue);
     strokeWeight(5);
@@ -152,7 +151,7 @@ class expandCircleObj {
     this.red -= 5;
     this.blue -= 5;
     this.green -= 5;
-    if (this.red <= 10) {
+    if (this.red <= 10) { //when color reaches below 10 stop drawing
       this.draw = 0;
     }
     pop();
@@ -189,8 +188,6 @@ var count = 0;
 var mouseClicked = function () {
   target.x = mouseX;
   target.y = mouseY;
-  //text("x clicked" + target.x, 20, 20);
-  //text("y clicked" + target.y, 20, 40);
 };
 
 function keyPressed() {
@@ -200,7 +197,7 @@ function keyReleased() {
   keyArray[keyCode] = 0;
 }
 
-function addCircle(x, y) {
+function addCircle(x, y) { //adds a circle to the key
   c[index] = (new expandCircleObj(x, y, 255, 255, 255));
   index++;
   if (index > 60) {
@@ -214,7 +211,7 @@ function setup() {
   start = 0;
   instruction = 0;
   playgame = 0;
-
+  //draws the eighth and quarter note to save
   noStroke();
   rect(129, 130, 10, 170);
   rect(329, 130, 10, 170);
@@ -243,9 +240,9 @@ function setup() {
 function draw() {
   background(0);
   if (start === 0) {
-    for (var i = 0; i < c.length; i++) {
+    for (var i = 0; i < c.length; i++) { //ripples
       if (c[i].draw == 1) {
-        c[i].display();
+        c[i].draw();
         c[i].update();
       }
     }
@@ -278,7 +275,7 @@ function draw() {
     //mouseClicked();.
     fill(255);
     rect(144,50,110, 100);
-    if (currFrameCount < frameCount - 60) {
+    if (currFrameCount < frameCount - 60) { //indicates which notes appear
       switch (count) {
         case 0:
           images[count] = new musicnote(105, 114, 0);
@@ -299,7 +296,7 @@ function draw() {
       }
       currFrameCount = frameCount;
     }
-    for (var i = 0; i < images.length; i++) {
+    for (var i = 0; i < images.length; i++) { //draws notes
       images[i].draw();
       images[i].move();
     }
