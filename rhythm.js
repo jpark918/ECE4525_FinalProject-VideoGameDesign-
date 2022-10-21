@@ -261,7 +261,7 @@ function draw() {
   else if (start === 1) {
     //mouseClicked();.
     fill(255);
-    rect(135,50,120, 100);
+    rect(144,50,110, 100);
     if (currFrameCount < frameCount - 60) {
       switch (count) {
         case 0:
