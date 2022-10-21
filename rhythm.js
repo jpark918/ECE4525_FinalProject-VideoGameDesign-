@@ -1,3 +1,11 @@
+//For this first project milestone, Daniel contributed
+//with the button press ripple animation in the main menu screen
+//as well as the music note sliding animation in the instruction screen.
+//Jihoon contributed with the main menu layout and initial button press
+//code functionality as well as stickman picture and music note picture 
+//creation in the instruction screen.
+
+
 class musicnote {
   constructor(x, y, id) {
     this.x = x;
@@ -128,6 +136,9 @@ class expandCircleObj {
     this.red = r;
     this.green = g;
     this.blue = b;
+    // this.red = random(0,255);
+    // this.green = random(0,255);
+    // this.blue = random(0,255);
     this.draw = 1;
   }
 
@@ -239,10 +250,14 @@ function draw() {
     }
     gamestate[0].execute(gamestate[0]);
     fill(255)
+    textSize(30);
+    //text("Thursday Night Thrillin'", 50, 100)
+    //text("Java Beats", 120, 100)
+    text("Ripples", 150, 100)
     textSize(15);
     text("Created by:", 160, 350);
     textSize(20);
-    text("Daniel Shin and Jihoon Park", 75, 380);
+    text("Daniel Shin and Jihoon Park", 70, 380);
     // if (canvas.mouseClicked()) {
     //   text("x clicked" + target.x, 20, 20);W
     //   text("y clicked" + target.y, 20, 30);
@@ -326,8 +341,9 @@ function draw() {
     line(180,95, 195, 110);
 
     textSize(15);
+    fill(255);
     //text("THIS GAME IS SCUFFED AF", 0, 200);
-    text("NAMEOFGAME is a rhythm game that tests the player's", 5, 215);
+    text("Ripples is a rhythm game that tests the player's", 5, 215);
     text("ability to match button presses at a certain time.", 5, 230);
     text("Failure to time button presses will slowly bring", 5, 245);
     text("your score down until you lose. The game will", 5, 260);
