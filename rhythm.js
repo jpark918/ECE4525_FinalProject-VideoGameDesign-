@@ -30,7 +30,6 @@ class Note {
 	constructor(speed) {
 	  this.speed = speed;
 	  this.score = 0;
-		//reading from txt file
 		  this.tilemap = txt;
 	}
 	initialize() {
@@ -473,21 +472,85 @@ class instructionNote {
 	  stroke(255);
 	  line(0, 350, 400, 350);
       
-      
-      fill(255);
-      circle(50, 350, 30);
-      circle(110, 350, 30);
-      circle(170, 350, 30);
-      circle(230, 350, 30);
-      circle(290, 350, 30);
-      circle(350, 350, 30);
-      fill(0);
-      text("A", 44, 355);
-      text("S", 104, 355);
-      text("D", 164, 355);
-      text("J", 224, 355);
-      text("K", 284, 355);
-      text("L", 344, 355);
+      if (keyArray[65] === 1){ //A
+        fill(178, 190, 181);
+        circle(50, 350, 30);
+        fill(255);
+        text("A", 44, 355);
+      }
+      else{
+        fill(255);
+        circle(50, 350, 30);
+        fill(0);
+        text("A", 44, 355);
+      }
+      if (keyArray[83] === 1){ //S
+        fill(178, 190, 181);
+        circle(110, 350, 30);
+        fill(255);
+        text("S", 104, 355);
+      }
+      else{
+        fill(255);
+        circle(110, 350, 30);
+         fill(0);
+        text("S", 104, 355);
+      }
+      if (keyArray[68] === 1){ //D
+        fill(178, 190, 181);
+        circle(170, 350, 30);
+         fill(255);
+        text("D", 164, 355);
+      }
+      else{
+        fill(255);
+        circle(170, 350, 30);
+           fill(0);
+        text("D", 164, 355);
+      }
+      if (keyArray[74] === 1){ //J
+        fill(178, 190, 181);
+        circle(230, 350, 30);
+            fill(255);
+        text("J", 224, 355);
+      }
+      else{
+        fill(255);
+        circle(230, 350, 30);
+          fill(0);
+        text("J", 224, 355);
+      }
+      if (keyArray[75] === 1){ //K
+     fill(178, 190, 181);
+        circle(290, 350, 30);
+           fill(255);
+        text("K", 284, 355);
+      }
+      else{
+        fill(255);
+        circle(290, 350, 30);
+        fill(0);
+        text("K", 284, 355);
+      }
+      if (keyArray[76] === 1){ //L
+        fill(178, 190, 181);
+        circle(350, 350, 30);
+         fill(255);
+        text("L", 344, 355);
+      }
+      else{
+        fill(255);
+        circle(350, 350, 30);
+         fill(0);
+        text("L", 344, 355);
+      }
+      //fill(0);
+      //text("A", 44, 355);
+      //text("S", 104, 355);
+      //text("D", 164, 355);
+      //text("J", 224, 355);
+      //text("K", 284, 355);
+    //  text("L", 344, 355);
       
       fill(255);
 	  noStroke();
