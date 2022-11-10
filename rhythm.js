@@ -22,7 +22,7 @@ class Note {
 	  text(this.x, this.x, this.y);
 	}
   }
-
+  
   //this class includes the tilemap for our main game play,
   //note objects in order to play the game, and button checking
   //implmentation in order to score points
@@ -30,7 +30,8 @@ class Note {
 	constructor(speed) {
 	  this.speed = speed;
 	  this.score = 0;
-		  this.tilemap = txt;
+	  //reading from txt file
+	  this.tilemap = txt;
 	}
 	initialize() {
 	  for (var i = 0; i < this.tilemap.length; i++) {
@@ -83,9 +84,9 @@ class Note {
 	  }
 	}
   }
-
-//music note for the animation in the instruction screen
-class instructionNote {
+  
+  //music note for the animation in the instruction screen
+  class instructionNote {
 	constructor(x, y, id) {
 	  this.x = x;
 	  this.y = y;
@@ -267,7 +268,7 @@ class instructionNote {
   let song;
   var startost = 0;
   var txt = 0;
-
+  
   var mouseClicked = function () {
 	target.x = mouseX;
 	target.y = mouseY;
@@ -288,18 +289,18 @@ class instructionNote {
 	}
   }
   
-  function preload(){
-	song = loadSound('poke3.mp3');
-    txt = loadStrings("tilemap.txt");
+  function preload() {
+	song = loadSound('poke.mp3');
+	txt = loadStrings("tilemap.txt");
   }
-
+  
   function setup() {
 	canvas = createCanvas(400, 400);
 	target = new targetObj(100, 100);
 	start = 0;
 	instruction = 0;
 	playgame = 0;
-	music = new Music(3.45);
+	music = new Music(3.434);
 	music.initialize();
 	song.setVolume(0.5);
 	//draws the eighth and quarter note to save
@@ -366,7 +367,7 @@ class instructionNote {
 	else if (start === 1) {
 	  //mouseClicked();.
 	  fill(255);
-	  rect(144,50,110, 100);
+	  rect(144, 50, 110, 100);
 	  if (currFrameCount < frameCount - 60) { //indicates which notes appear
 		switch (count) {
 		  case 0:
@@ -393,12 +394,12 @@ class instructionNote {
 		images[i].move();
 	  }
 	  strokeWeight(0);
-	  fill(137,207,240);
-	  ellipse(200,160, 270, 14);
-	  fill(240,225,48)
-	  ellipse(200,160,270,8)
-	  fill(128,0,0);
-	  ellipse(200,160,270,4);
+	  fill(137, 207, 240);
+	  ellipse(200, 160, 270, 14);
+	  fill(240, 225, 48)
+	  ellipse(200, 160, 270, 8)
+	  fill(128, 0, 0);
+	  ellipse(200, 160, 270, 4);
 	  fill(255)
 	  //spkr1
 	  stroke(0);
@@ -410,25 +411,25 @@ class instructionNote {
 	  rect(260, 100, 30, 50);
 	  circle(275, 114, 20);
 	  circle(275, 138, 20);
-	  
+  
 	  fill(255)
 	  square(200, 110, 20);
 	  square(210, 130, 20);
 	  square(190, 130, 20);
 	  circle(185, 100, 15);
-	  
-	  line(186,107,190,130); //body
-	  line(190,130,180,138); //left thigh
-	  line(180,138,185,150); //left leg
-	  line(190,130, 200,135); //right thigh;
-	  line(200,135, 190,150); //right leg
-	  line(186,107, 180,120); //left upper arm
-	  line(180, 120, 185,130); //left lower arm
+  
+	  line(186, 107, 190, 130); //body
+	  line(190, 130, 180, 138); //left thigh
+	  line(180, 138, 185, 150); //left leg
+	  line(190, 130, 200, 135); //right thigh;
+	  line(200, 135, 190, 150); //right leg
+	  line(186, 107, 180, 120); //left upper arm
+	  line(180, 120, 185, 130); //left lower arm
 	  line(186, 107, 195, 120); //right upper arm
 	  line(195, 120, 185, 125);
-	  fill(255,0,0);
-	  arc(185,100,15,15,PI+QUARTER_PI, HALF_PI - QUARTER_PI);
-	  line(180,95, 195, 110);
+	  fill(255, 0, 0);
+	  arc(185, 100, 15, 15, PI + QUARTER_PI, HALF_PI - QUARTER_PI);
+	  line(180, 95, 195, 110);
   
 	  textSize(15);
 	  fill(255);
@@ -458,15 +459,15 @@ class instructionNote {
 	}
 	else if (start === 2) {
 	  //text("I AM GAMING", 0, 200);
-	  if (frameCount === startost+100){
+	  if (frameCount === startost + 39) {
 		song.play();
 	  }
 	  background(0);
 	  music.move();
 	  music.checkPlay();
-	  for(var i = 0; i < notes.length; i++){
-		if(notes[i].played === 0){
-			notes[i].draw();
+	  for (var i = 0; i < notes.length; i++) {
+		if (notes[i].played === 0) {
+		  notes[i].draw();
 		}
 	  }
 	  stroke(255);
@@ -553,9 +554,27 @@ class instructionNote {
     //  text("L", 344, 355);
       
       fill(255);
+  
+  
+	  fill(255);
+	  circle(50, 350, 30);
+	  circle(110, 350, 30);
+	  circle(170, 350, 30);
+	  circle(230, 350, 30);
+	  circle(290, 350, 30);
+	  circle(350, 350, 30);
+	  fill(0);
+	  text("A", 44, 355);
+	  text("S", 104, 355);
+	  text("D", 164, 355);
+	  text("J", 224, 355);
+	  text("K", 284, 355);
+	  text("L", 344, 355);
+  
+	  fill(255);
 	  noStroke();
 	  fill(255);
-      textSize(15);
+	  textSize(15);
 	  text("Score: " + music.score, 10, 15);
 	}
   }
