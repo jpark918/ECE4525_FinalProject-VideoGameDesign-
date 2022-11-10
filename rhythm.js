@@ -605,5 +605,6 @@ class instructionNote {
 	  fill(255);
       textSize(15);
 	  text("Score: " + music.score, 10, 15);
+	  //new stuff
 	}
   }
