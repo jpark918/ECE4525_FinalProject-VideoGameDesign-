@@ -552,24 +552,6 @@ class Note {
       //text("J", 224, 355);
       //text("K", 284, 355);
     //  text("L", 344, 355);
-      
-      fill(255);
-  
-  
-	  fill(255);
-	  circle(50, 350, 30);
-	  circle(110, 350, 30);
-	  circle(170, 350, 30);
-	  circle(230, 350, 30);
-	  circle(290, 350, 30);
-	  circle(350, 350, 30);
-	  fill(0);
-	  text("A", 44, 355);
-	  text("S", 104, 355);
-	  text("D", 164, 355);
-	  text("J", 224, 355);
-	  text("K", 284, 355);
-	  text("L", 344, 355);
   
 	  fill(255);
 	  noStroke();
