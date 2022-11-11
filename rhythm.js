@@ -18,8 +18,8 @@ class Note {
 	  noStroke();
 	  fill(255);
 	  circle(this.x, this.y, 30);
-	  fill(255, 0, 0);
-	  text(this.x, this.x, this.y);
+	  //fill(255, 0, 0);
+	  //text(this.x, this.x, this.y);
 	}
   }
   
