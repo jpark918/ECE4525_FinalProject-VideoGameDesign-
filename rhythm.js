@@ -461,7 +461,7 @@ class Note {
 	else if (start === 2) {
 	  //text("I AM GAMING", 0, 200);
 	  images = [];
-  
+	  c = [];
 	  if (frameCount === startost + 19) {
 		song.play();
 	  }
