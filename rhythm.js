@@ -295,12 +295,13 @@ class Note {
   }
   
   function setup() {
+	frameRate(30);
 	canvas = createCanvas(400, 400);
 	target = new targetObj(100, 100);
 	start = 0;
 	instruction = 0;
 	playgame = 0;
-	music = new Music(3.434);
+	music = new Music(6.868);
 	music.initialize();
 	song.setVolume(0.5);
 	//draws the eighth and quarter note to save
@@ -459,99 +460,101 @@ class Note {
 	}
 	else if (start === 2) {
 	  //text("I AM GAMING", 0, 200);
-	  if (frameCount === startost + 39) {
+	  images = [];
+  
+	  if (frameCount === startost + 19) {
 		song.play();
 	  }
 	  background(0);
 	  music.move();
 	  music.checkPlay();
 	  for (var i = 0; i < notes.length; i++) {
-		if (notes[i].played === 0) {
+		if (notes[i].played === 0 && notes[i].y >= -30) {
 		  notes[i].draw();
 		}
 	  }
 	  stroke(255);
 	  line(0, 350, 400, 350);
-      
-      if (keyArray[65] === 1){ //A
-        fill(178, 190, 181);
-        circle(50, 350, 30);
-        fill(255);
-        text("A", 44, 355);
-      }
-      else{
-        fill(255);
-        circle(50, 350, 30);
-        fill(0);
-        text("A", 44, 355);
-      }
-      if (keyArray[83] === 1){ //S
-        fill(178, 190, 181);
-        circle(110, 350, 30);
-        fill(255);
-        text("S", 104, 355);
-      }
-      else{
-        fill(255);
-        circle(110, 350, 30);
-         fill(0);
-        text("S", 104, 355);
-      }
-      if (keyArray[68] === 1){ //D
-        fill(178, 190, 181);
-        circle(170, 350, 30);
-         fill(255);
-        text("D", 164, 355);
-      }
-      else{
-        fill(255);
-        circle(170, 350, 30);
-           fill(0);
-        text("D", 164, 355);
-      }
-      if (keyArray[74] === 1){ //J
-        fill(178, 190, 181);
-        circle(230, 350, 30);
-            fill(255);
-        text("J", 224, 355);
-      }
-      else{
-        fill(255);
-        circle(230, 350, 30);
-          fill(0);
-        text("J", 224, 355);
-      }
-      if (keyArray[75] === 1){ //K
-     fill(178, 190, 181);
-        circle(290, 350, 30);
-           fill(255);
-        text("K", 284, 355);
-      }
-      else{
-        fill(255);
-        circle(290, 350, 30);
-        fill(0);
-        text("K", 284, 355);
-      }
-      if (keyArray[76] === 1){ //L
-        fill(178, 190, 181);
-        circle(350, 350, 30);
-         fill(255);
-        text("L", 344, 355);
-      }
-      else{
-        fill(255);
-        circle(350, 350, 30);
-         fill(0);
-        text("L", 344, 355);
-      }
-      //fill(0);
-      //text("A", 44, 355);
-      //text("S", 104, 355);
-      //text("D", 164, 355);
-      //text("J", 224, 355);
-      //text("K", 284, 355);
-    //  text("L", 344, 355);
+  
+	  if (keyArray[65] === 1) { //A
+		fill(178, 190, 181);
+		circle(50, 350, 30);
+		fill(255);
+		text("A", 44, 355);
+	  }
+	  else {
+		fill(255);
+		circle(50, 350, 30);
+		fill(0);
+		text("A", 44, 355);
+	  }
+	  if (keyArray[83] === 1) { //S
+		fill(178, 190, 181);
+		circle(110, 350, 30);
+		fill(255);
+		text("S", 104, 355);
+	  }
+	  else {
+		fill(255);
+		circle(110, 350, 30);
+		fill(0);
+		text("S", 104, 355);
+	  }
+	  if (keyArray[68] === 1) { //D
+		fill(178, 190, 181);
+		circle(170, 350, 30);
+		fill(255);
+		text("D", 164, 355);
+	  }
+	  else {
+		fill(255);
+		circle(170, 350, 30);
+		fill(0);
+		text("D", 164, 355);
+	  }
+	  if (keyArray[74] === 1) { //J
+		fill(178, 190, 181);
+		circle(230, 350, 30);
+		fill(255);
+		text("J", 224, 355);
+	  }
+	  else {
+		fill(255);
+		circle(230, 350, 30);
+		fill(0);
+		text("J", 224, 355);
+	  }
+	  if (keyArray[75] === 1) { //K
+		fill(178, 190, 181);
+		circle(290, 350, 30);
+		fill(255);
+		text("K", 284, 355);
+	  }
+	  else {
+		fill(255);
+		circle(290, 350, 30);
+		fill(0);
+		text("K", 284, 355);
+	  }
+	  if (keyArray[76] === 1) { //L
+		fill(178, 190, 181);
+		circle(350, 350, 30);
+		fill(255);
+		text("L", 344, 355);
+	  }
+	  else {
+		fill(255);
+		circle(350, 350, 30);
+		fill(0);
+		text("L", 344, 355);
+	  }
+	  //fill(0);
+	  //text("A", 44, 355);
+	  //text("S", 104, 355);
+	  //text("D", 164, 355);
+	  //text("J", 224, 355);
+	  //text("K", 284, 355);
+	  //  text("L", 344, 355);
   
 	  fill(255);
 	  noStroke();
