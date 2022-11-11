@@ -1,10 +1,7 @@
-//For this first project milestone, Daniel contributed
-//with the button press ripple animation in the main menu screen
-//as well as the music note sliding animation in the instruction screen.
-//Jihoon contributed with the main menu layout, instruction description,
-//initial button press implementation,
-//code functionality as well as stickman picture and music note picture 
-//creation in the instruction screen.
+//For this Second project milestone, Daniel contributed
+//with the Music class which includes our tilemap and button checking for score implementation that is mainly our game class state.
+//Jihoon contributed with the tilemap, button press visualization for the game class state, and incorporating the game play state from the main menu state.
+
 
 //This class creates the note object in order to play the game
 //in the play state.
@@ -253,7 +250,7 @@ class Note {
   var instruction;
   var target;
   var canvas;
-  var gamestate = [new MenuScreenState];
+  var gamestate = [new MenuScreenState()];
   var playgame;
   var keyArray = [];
   var c = [];
@@ -343,8 +340,8 @@ class Note {
 	  fill(255)
 	  textSize(30);
 	  //text("Thursday Night Thrillin'", 50, 100)
-	  //text("Java Beats", 120, 100)
-	  text("Ripples", 150, 100)
+	  text("JavaS. Beats", 120, 100)
+	  //text("Ripples", 150, 100)
 	  textSize(15);
 	  text("Created by:", 160, 350);
 	  textSize(20);
