@@ -246,6 +246,7 @@ class Note {
 	}
   }
   
+  var mode;  //difficulty selection screen state?
   var start;
   var instruction;
   var target;
@@ -295,6 +296,7 @@ class Note {
 	frameRate(30);
 	canvas = createCanvas(400, 400);
 	target = new targetObj(100, 100);
+    mode = 0;
 	start = 0;
 	instruction = 0;
 	playgame = 0;
@@ -352,12 +354,14 @@ class Note {
 	  // }
 	  //mouseClicked();
 	  if (target.x >= 138 && target.x <= 233 && target.y >= 291 && target.y <= 299 && start === 0) {
-		print("Instructions clicked");
+		//print("Instructions clicked");
 		start = 1;
 	  }
 	  else if (target.x >= 165 && target.y >= 256 && target.x <= 200 && target.y <= 270 && start === 0) {
-		start = 2;
-		startost = frameCount;
+		//start = 2;
+		//startost = frameCount;
+        start = 5; //5 is unused condition in code
+        mode = 1;
 	  }
 	  text("Play", 180, 270);
 	  text("Instructions", 145, 300);
@@ -559,4 +563,27 @@ class Note {
 	  textSize(15);
 	  text("Score: " + music.score, 10, 15);
 	}
+    else if (mode === 1){
+      textSize(20);
+      fill(255);
+      text("Song Selection", 130, 30);  
+      text("Mewmore // National Park", 80, 170);
+      if (target.x >= 80 && target.y >= 160 && target.x <= 315 && target.y <= 170){
+          start = 2;
+		  startost = frameCount;
+          mode = 0;
+      }
+      text("Chroma - Dark Sheep", 95, 210);
+      if (target.x >= 95 && target.y >= 200 && target.x <= 290 && target.y <= 210){
+         start = 0;
+         mode = 0;
+      }
+      
+      textSize(15);
+      text("Return", 340, 380);
+	  if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
+		start = 0; //return to title screen
+        mode = 0;
+	  }
+    }
   }
