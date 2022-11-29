@@ -24,59 +24,66 @@ class Note {
   //note objects in order to play the game, and button checking
   //implmentation in order to score points
   class Music {
-	constructor(speed) {
+	constructor(speed, text) {
 	  this.speed = speed;
 	  this.score = 0;
 	  //reading from txt file
-	  this.tilemap = txt;
+	  this.tilemap = text;
+	  this.notes = [];
 	}
 	initialize() {
 	  for (var i = 0; i < this.tilemap.length; i++) {
 		for (var j = 0; j < this.tilemap[i].length; j++) {
 		  switch (this.tilemap[i][j]) {
 			case "1":
-			  notes.push(new Note(j * 60 + 50, i * 30 - this.tilemap.length * 30));
+			  this.notes.push(new Note(j * 60 + 50, i * 30 - this.tilemap.length * 30));
+			  break;
+			case "2":
+			  this.notes.push(new Note(j * 60 + 50, i * 30 - this.tilemap.length * 30 - 10));
+			  break;
+			case "3":
+			  this.notes.push(new Note(j * 60 + 50, i * 30 - this.tilemap.length * 30 - 20));
 			  break;
 		  }
 		}
 	  }
 	}
 	move() {
-	  for (var i = 0; i < notes.length; i++) {
-		notes[i].y += this.speed;
+	  for (var i = 0; i < this.notes.length; i++) {
+		this.notes[i].y += this.speed;
 	  }
 	}
 	checkPlay() {
-	  for (var i = 0; i < notes.length; i++) {
-		if (notes[i].y >= 335 && notes[i].y <= 365 && notes[i].played === 0) {
-		  if (keyArray[65] === 1 && notes[i].x === 50) {
-			notes[i].played = 1;
+	  for (var i = 0; i < this.notes.length; i++) {
+		if (this.notes[i].y >= 335 && this.notes[i].y <= 365 && this.notes[i].played === 0) {
+		  if (keyArray[65] === 1 && this.notes[i].x === 50) {
+			this.notes[i].played = 1;
 			this.score++;
 		  }
-		  if (keyArray[83] === 1 && notes[i].x === 110) {
-			notes[i].played = 1;
+		  if (keyArray[83] === 1 && this.notes[i].x === 110) {
+			this.notes[i].played = 1;
 			this.score++;
 		  }
-		  if (keyArray[68] === 1 && notes[i].x === 170) {
-			notes[i].played = 1;
+		  if (keyArray[68] === 1 && this.notes[i].x === 170) {
+			this.notes[i].played = 1;
 			this.score++;
 		  }
-		  if (keyArray[74] === 1 && notes[i].x === 230) {
-			notes[i].played = 1;
+		  if (keyArray[74] === 1 && this.notes[i].x === 230) {
+			this.notes[i].played = 1;
 			this.score++;
 		  }
-		  if (keyArray[75] === 1 && notes[i].x === 290) {
-			notes[i].played = 1;
+		  if (keyArray[75] === 1 && this.notes[i].x === 290) {
+			this.notes[i].played = 1;
 			this.score++;
 		  }
-		  if (keyArray[76] === 1 && notes[i].x === 350) {
-			notes[i].played = 1;
+		  if (keyArray[76] === 1 && this.notes[i].x === 350) {
+			this.notes[i].played = 1;
 			this.score++;
 		  }
 		}
-		if (notes[i].y >= 400 && notes[i].played === 0) {
+		if (this.notes[i].y >= 400 && this.notes[i].played === 0) {
 		  this.score--;
-		  notes[i].played = 1;
+		  this.notes[i].played = 1;
 		}
 	  }
 	}
@@ -261,11 +268,13 @@ class Note {
   var quarter;
   var currFrameCount = 0;
   var count = 0;
-  var notes = [];
   var music;
   let song;
   var startost = 0;
   var txt = 0;
+  var sel;
+  var music2;
+  let song2;
   
   var mouseClicked = function () {
 	target.x = mouseX;
@@ -289,20 +298,25 @@ class Note {
   
   function preload() {
 	song = loadSound('poke.mp3');
+	song2 = loadSound('sheep.mp3');
 	txt = loadStrings("tilemap.txt");
+	txt2 = loadStrings("sheep.txt");
   }
   
   function setup() {
 	frameRate(30);
 	canvas = createCanvas(400, 400);
 	target = new targetObj(100, 100);
-    mode = 0;
+	mode = 0;
 	start = 0;
 	instruction = 0;
 	playgame = 0;
-	music = new Music(6.868);
+	music = new Music(6.868, txt);
 	music.initialize();
 	song.setVolume(0.5);
+	music2 = new Music(11.7, txt2);
+	music2.initialize();
+	song2.setVolume(0.3);
 	//draws the eighth and quarter note to save
 	noStroke();
 	rect(129, 130, 10, 170);
@@ -360,8 +374,8 @@ class Note {
 	  else if (target.x >= 165 && target.y >= 256 && target.x <= 200 && target.y <= 270 && start === 0) {
 		//start = 2;
 		//startost = frameCount;
-        start = 5; //5 is unused condition in code
-        mode = 1;
+		start = 5; //5 is unused condition in code
+		mode = 1;
 	  }
 	  text("Play", 180, 270);
 	  text("Instructions", 145, 300);
@@ -463,15 +477,31 @@ class Note {
 	  //text("I AM GAMING", 0, 200);
 	  images = [];
 	  c = [];
-	  if (frameCount === startost + 19) {
-		song.play();
+	  if (sel === 0) {
+		if (frameCount === startost + 19) {
+		  song.play();
+		}
+		background(0);
+		music.move();
+		music.checkPlay();
+		for (var i = 0; i < music.notes.length; i++) {
+		  if (music.notes[i].played === 0 && music.notes[i].y >= -30) {
+			music.notes[i].draw();
+		  }
+		}
 	  }
-	  background(0);
-	  music.move();
-	  music.checkPlay();
-	  for (var i = 0; i < notes.length; i++) {
-		if (notes[i].played === 0 && notes[i].y >= -30) {
-		  notes[i].draw();
+	  else if (sel === 1) {
+		//print(frameCount + " " + startost);
+		if (frameCount === startost + 70) {
+		  song2.play();
+		}
+		background(0);
+		music2.move();
+		music2.checkPlay();
+		for (var i = 0; i < music2.notes.length; i++) {
+		  if (music2.notes[i].played === 0 && music2.notes[i].y >= -30) {
+			music2.notes[i].draw();
+		  }
 		}
 	  }
 	  stroke(255);
@@ -563,27 +593,30 @@ class Note {
 	  textSize(15);
 	  text("Score: " + music.score, 10, 15);
 	}
-    else if (mode === 1){
-      textSize(20);
-      fill(255);
-      text("Song Selection", 130, 30);  
-      text("Mewmore // National Park", 80, 170);
-      if (target.x >= 80 && target.y >= 160 && target.x <= 315 && target.y <= 170){
-          start = 2;
-		  startost = frameCount;
-          mode = 0;
-      }
-      text("Chroma - Dark Sheep", 95, 210);
-      if (target.x >= 95 && target.y >= 200 && target.x <= 290 && target.y <= 210){
-         start = 0;
-         mode = 0;
-      }
-      
-      textSize(15);
-      text("Return", 340, 380);
+	else if (mode === 1) {
+	  textSize(20);
+	  fill(255);
+	  text("Song Selection", 130, 30);
+	  text("Mewmore // National Park", 80, 170);
+	  if (target.x >= 80 && target.y >= 160 && target.x <= 315 && target.y <= 170) {
+		start = 2;
+		sel = 0;
+		startost = frameCount;
+		mode = 0;
+	  }
+	  text("Chroma - Dark Sheep", 95, 210);
+	  if (target.x >= 95 && target.y >= 200 && target.x <= 290 && target.y <= 210) {
+		start = 2;
+		sel = 1;
+		startost = frameCount;
+		mode = 0;
+	  }
+  
+	  textSize(15);
+	  text("Return", 340, 380);
 	  if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
 		start = 0; //return to title screen
-        mode = 0;
+		mode = 0;
 	  }
-    }
+	}
   }
