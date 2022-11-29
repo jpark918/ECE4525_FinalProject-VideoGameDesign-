@@ -633,6 +633,7 @@ class Note {
 		start = 2;
 		startost = frameCount;
 		mode = 0;
+		
 	  }
 	  text("Chroma - Dark Sheep", 95, 210);
 	  if (
