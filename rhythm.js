@@ -30,6 +30,12 @@ class Note {
 	  //reading from txt file
 	  this.tilemap = text;
 	  this.notes = [];
+      this.a = 0;
+	  this.s = 0;
+	  this.d = 0;
+	  this.j = 0;
+	  this.j = 0;
+	  this.l = 0;
 	}
 	initialize() {
 	  for (var i = 0; i < this.tilemap.length; i++) {
@@ -54,40 +60,147 @@ class Note {
 	  }
 	}
 	checkPlay() {
+		this.scorestreak();
 	  for (var i = 0; i < this.notes.length; i++) {
 		if (this.notes[i].y >= 335 && this.notes[i].y <= 365 && this.notes[i].played === 0) {
-		  if (keyArray[65] === 1 && this.notes[i].x === 50) {
+          fill(255)
+		  if (keyArray[65] === 1 && this.notes[i].x === 50 && this.a == 0) {
 			this.notes[i].played = 1;
 			this.score++;
+			this.streak++;
+             ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+            this.a = 1;
 		  }
-		  if (keyArray[83] === 1 && this.notes[i].x === 110) {
+          else{
+            if (keyArray[65] === 0){
+              this.a = 0;
+            }
+          }
+		  if (keyArray[83] === 1 && this.notes[i].x === 110 && this.s == 0) {
 			this.notes[i].played = 1;
 			this.score++;
+			this.streak++;
+             ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+            this.s =1;
 		  }
-		  if (keyArray[68] === 1 && this.notes[i].x === 170) {
+          else{
+            if (keyArray[83] === 0){
+              this.s = 0;
+            }
+          }
+		  if (keyArray[68] === 1 && this.notes[i].x === 170 && this.d == 0) {
 			this.notes[i].played = 1;
 			this.score++;
+			this.streak++;
+             ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+            this.d = 1;
 		  }
-		  if (keyArray[74] === 1 && this.notes[i].x === 230) {
+          else{
+            if (keyArray[68] === 0){
+              this.d = 0;
+            }
+          }
+		  if (keyArray[74] === 1 && this.notes[i].x === 230 && this.j == 0) {
 			this.notes[i].played = 1;
 			this.score++;
+			this.streak++;
+             ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+          this.j = 1;
 		  }
-		  if (keyArray[75] === 1 && this.notes[i].x === 290) {
+          else{
+            if (keyArray[74] === 0){
+              this.j = 0;
+            }
+          }
+		  if (keyArray[75] === 1 && this.notes[i].x === 290 && this.k == 0) {
 			this.notes[i].played = 1;
 			this.score++;
+			this.streak++;
+          ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+            this.k = 1;
 		  }
-		  if (keyArray[76] === 1 && this.notes[i].x === 350) {
+          else{
+            if (keyArray[75] === 0){
+              this.k = 0;
+            }
+          }
+		  if (keyArray[76] === 1 && this.notes[i].x === 350 && this.l == 0) {
 			this.notes[i].played = 1;
 			this.score++;
+			this.streak++;
+            ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 5, 5);
+            this.l = 1;
 		  }
+          else{
+            if (keyArray[76] === 0){
+              this.l = 0;
+            }
+          }
 		}
 		if (this.notes[i].y >= 400 && this.notes[i].played === 0) {
 		  this.score--;
+		  this.streak = 0; //reset the streak
 		  this.notes[i].played = 1;
 		}
 	  }
 	}
-  }
+	scorestreak() {
+        noStroke();
+		if (this.streak >= 10 && this.streak <= 29) {  //20 39
+		  fill(255);
+		  //ellipse(random() * width, random() * height, 3, 3);
+		  //ellipse(random() * width, random() * height, 5, 5);
+		} 
+		else if (this.streak >= 30 && this.streak <= 49) {  //40 59
+		  //fill(200, 164.7, 0); //orange
+		  fill(240, 225, 48); //Dandelion Yellow
+          /*
+		  ellipse(random() * width, random() * height, 2, 2);
+		  ellipse(random() * width, random() * height, 3, 3);
+		  ellipse(random() * width, random() * height, 5, 5);
+          */
+		}
+		else if (this. streak >= 50){ //60
+		  fill(135, 206, 235); //Sky Blue
+          /*
+		  ellipse(random() * width, random() * height, 1, 1);
+		  ellipse(random() * width, random() * height, 2, 2);
+		  ellipse(random() * width, random() * height, 3, 3);
+		  ellipse(random() * width, random() * height, 4, 4);
+		  ellipse(random() * width, random() * height, 5, 5);
+		  ellipse(random() * width, random() * height, 1, 1);
+		  ellipse(random() * width, random() * height, 2, 2);
+		  ellipse(random() * width, random() * height, 3, 3);
+		  ellipse(random() * width, random() * height, 4, 4);
+		  ellipse(random() * width, random() * height, 5, 5);
+          */
+		}
+      if(this.streak >= 55){
+        fill(random(0,255), random(0,255), random(0,255));
+      } 
+      if(this.streak >= 10){
+        rect(371.5, 143, 17, 20);
+        if (this.streak >= 30){
+          rect(371.5, 118, 17, 24);
+        }
+        if (this.streak >=50){
+          rect(371.5, 96, 17, 20)
+        }
+      }
+	 }
+  } //End music class
   
   //music note for the animation in the instruction screen
   class instructionNote {
@@ -272,9 +385,11 @@ class Note {
   let song;
   var startost = 0;
   var txt = 0;
+  var txt2 = 0;
   var sel;
   var music2;
   let song2;
+  var gameover = 0;
   
   var mouseClicked = function () {
 	target.x = mouseX;
@@ -466,12 +581,6 @@ class Note {
 	  if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
 		start = 0;
 	  }
-	  // if (target.x >= 0 && target.y >= 0){
-	  //   //print("return");
-	  //   background(220);
-	  //   start = 1;
-	  //   instruction = 0;
-	  // }
 	}
 	else if (start === 2) {
 	  //text("I AM GAMING", 0, 200);
@@ -489,6 +598,24 @@ class Note {
 			music.notes[i].draw();
 		  }
 		}
+        fill(255);
+	    noStroke();
+	    textSize(15);
+	    text("Score: " + music.score, 10, 15);
+	    text("x" + music.streak, 360, 15);
+        stroke(255)
+        strokeWeight(1)
+        line(370, 95, 390, 95); //top bar
+        line(370,100, 370, 160); //left
+        line(390,100, 390, 160);//right
+        line(370, 165, 390, 165); //bot bar
+        //line(200, 200, 260, 200);
+        
+        text("framecount: " + frameCount, 200, 200);
+        if (frameCount === 7050 + startost + 19){
+          song.stop();
+          gameover = 1;
+        }
 	  }
 	  else if (sel === 1) {
 		//print(frameCount + " " + startost);
@@ -503,9 +630,26 @@ class Note {
 			music2.notes[i].draw();
 		  }
 		}
+        fill(255);
+	    noStroke();
+	    textSize(15);
+	    text("Score: " + music2.score, 10, 15);
+	    text("x" + music2.streak, 360, 15);
+         stroke(255)
+        strokeWeight(1)
+        line(370, 95, 390, 95); //top bar
+        line(370,100, 370, 160); //left
+        line(390,100, 390, 160);//right
+        line(370, 165, 390, 165); //bot bar
+        text("framecount: " + frameCount, 200, 200);
+        if (frameCount === 7050 + startost + 19){
+          song2.stop();
+          gameover = 1;
+        }
 	  }
 	  stroke(255);
 	  line(0, 350, 400, 350);
+      
   
 	  if (keyArray[65] === 1) { //A
 		fill(178, 190, 181);
@@ -586,12 +730,25 @@ class Note {
 	  //text("J", 224, 355);
 	  //text("K", 284, 355);
 	  //  text("L", 344, 355);
-  
-	  fill(255);
-	  noStroke();
-	  fill(255);
-	  textSize(15);
-	  text("Score: " + music.score, 10, 15);
+      if (gameover === 1){
+        background(0);
+        fill(255);
+        textSize(50);
+        text("Complete!", 90, 130);
+        textSize(30);
+        if (sel === 0){
+          text("Score: " + music.score, 90, 200);
+        }
+        else if (sel === 1){
+          text("Score: " + music2.score, 90, 200);
+        }
+        textSize(15);
+	  text("Return", 340, 380);
+	  if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
+		start = 0; //return to title screen
+		mode = 0;
+	  }
+      }
 	}
 	else if (mode === 1) {
 	  textSize(20);
@@ -603,6 +760,8 @@ class Note {
 		sel = 0;
 		startost = frameCount;
 		mode = 0;
+        //reset score
+        music.score = 0;
 	  }
 	  text("Chroma - Dark Sheep", 95, 210);
 	  if (target.x >= 95 && target.y >= 200 && target.x <= 290 && target.y <= 210) {
@@ -610,8 +769,19 @@ class Note {
 		sel = 1;
 		startost = frameCount;
 		mode = 0;
+        //reset score
+        music2.score = 0;
 	  }
-  
+      textSize(10);
+      text("Last Score:", 300, 130); //mewmore
+      text("Last Score:", 300, 230); //chroma
+      if (sel === 0 ){
+        text(music.score, 380, 150);
+      }
+      else if (sel === 1){
+        text(music2.score, 380, 250);
+      }
+      
 	  textSize(15);
 	  text("Return", 340, 380);
 	  if (target.x >= 340 && target.y >= 370 && target.x <= 382 && target.y <= 380) {
