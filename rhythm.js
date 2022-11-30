@@ -1,8 +1,10 @@
-//For this Second project milestone, Daniel contributed
-//with the Music class which includes our tilemap and button checking for score implementation that is mainly our game class state.
-//Jihoon contributed with the tilemap, button press visualization for the game class state, and incorporating the game play state from the main menu state.
+//For our final project, Daniel contributed
+//with the Music class which includes our tilemap and button checking for score implementation that //is mainly our game class state. 
+//Jihoon contributed with button press visualization for the game class state and combo streak //visualization. 
 
-
+//this class handles the animation for game play state when button press and
+//note is pressed at the correct time. The flash animation fades to black and melts 
+//in with the background
 class flash {
 	constructor(x, y, r, g, b) {
 	  this.x = x;
@@ -27,7 +29,10 @@ class flash {
 	}
   }
   
-  
+  //This function adds new flash to the screen whenever 
+  //button is pressed on time with the note.
+  //color can change depending on what the combo streak 
+  //the player is at.
   function addflash(x, y) {
 	if (fever === 1) {
 	  fl[ind] = (new flash(x, y, 255, 255, 255));
@@ -40,7 +45,7 @@ class flash {
 	}
 	if (fever === 4) {
 	  var rando = int(random(0, 6));
-	  print(rando);
+	  //print(rando);
 	  switch (rando) {
 		case 0:
 		  fl[ind] = (new flash(x, y, 255, 0, 0));
@@ -120,7 +125,6 @@ class flash {
 	  }
 	}
 	checkPlay() {
-	  
 	  this.scorestreak();
 	  for (var i = 0; i < this.notes.length; i++) {
 		if (this.notes[i].y >= 350 - this.speed * 2.5 && this.notes[i].y <= 350 + this.speed * 2.5 && this.notes[i].played === 0) {
@@ -129,9 +133,6 @@ class flash {
 			this.notes[i].played = 1;
 			this.score += 1 * fever;
 			this.streak++;
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
@@ -140,9 +141,6 @@ class flash {
 			this.notes[i].played = 1;
 			this.score += 1 * fever;
 			this.streak++;
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
@@ -151,9 +149,6 @@ class flash {
 			this.notes[i].played = 1;
 			this.score += 1 * fever;
 			this.streak++;
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
@@ -162,9 +157,6 @@ class flash {
 			this.notes[i].played = 1;
 			this.score += 1 * fever;
 			this.streak++;
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
@@ -173,9 +165,6 @@ class flash {
 			this.notes[i].played = 1;
 			this.score += 1 * fever;
 			this.streak++;
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
@@ -184,9 +173,6 @@ class flash {
 			this.notes[i].played = 1;
 			this.score += 1 * fever;
 			this.streak++;
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
-			//ellipse(random() * width, random() * height, 5, 5);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
 			addflash(random() * width, random() * height);
@@ -200,23 +186,17 @@ class flash {
 		}
 	  }
 	}
+    //This function handles the visual for combo streak
 	scorestreak() {
 	  noStroke();
 	  if (this.streak >= 10 && this.streak <= 29) {  //20 39
 		fill(0, 255, 255);
 		fever = 2;
-		//ellipse(random() * width, random() * height, 3, 3);
-		//ellipse(random() * width, random() * height, 5, 5);
 	  }
 	  else if (this.streak >= 30 && this.streak <= 49) {  //40 59
 		//fill(200, 164.7, 0); //orange
 		fill(255, 255, 0); //Dandelion Yellow
 		fever = 3;
-		/*
-		ellipse(random() * width, random() * height, 2, 2);
-		ellipse(random() * width, random() * height, 3, 3);
-		ellipse(random() * width, random() * height, 5, 5);
-		*/
 	  }
 	  else if (this.streak >= 50) {
 		fill(random(0, 255), random(0, 255), random(0, 255));
@@ -389,8 +369,7 @@ class flash {
 	  this.diameter += 5;
 	}
   }
-  
-  
+  //This class is a part of computer cursor functionality
   class targetObj {
 	constructor(x, y) {
 	  this.x = x;
