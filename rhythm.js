@@ -3,6 +3,35 @@
 //Jihoon contributed with the tilemap, button press visualization for the game class state, and incorporating the game play state from the main menu state.
 
 
+class flash{
+	constructor(x,y,r,g,b){
+		this.x = x;
+		this.y = y;
+		this.r = r;
+		this.g = g;
+		this.b = b;
+		this.draw = 1;
+	}
+	display(){
+		fill(this.r, this.g, this.b)
+		this.r -= 5;
+		this.g -= 5;
+		this.b -= 5;
+		ellipse(this.x, this.y, 5, 5);
+		if (this.r < 0){
+			this.draw = 0;
+		}
+	}
+}
+
+function addflash(x, y){
+	fl[ind] = (new flash(x, y,255,255,255));
+	ind++;
+	if (ind > 60){
+		ind = 0;
+	}
+}
+
 //This class creates the note object in order to play the game
 //in the play state.
 class Note {
@@ -55,6 +84,11 @@ class Note {
 	  }
 	}
 	checkPlay() {
+	for (var i = 0; i < fl.length; i++) { //flash
+			if (fl[i].draw == 1) {
+			  fl[i].display();
+			}
+	}
 	  this.scorestreak();
 	  for (var i = 0; i < this.notes.length; i++) {
 		if (this.notes[i].y >= 350-this.speed*2 && this.notes[i].y <= 350+this.speed*2 && this.notes[i].played === 0) {
@@ -63,49 +97,67 @@ class Note {
 			this.notes[i].played = 1;
 			this.score++;
 			this.streak++;
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
 		  }
 		  if (s === 1 && this.notes[i].x === 110) {
 			this.notes[i].played = 1;
 			this.score++;
 			this.streak++;
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
 		  }
 		  if (d === 1 && this.notes[i].x === 170) {
 			this.notes[i].played = 1;
 			this.score++;
 			this.streak++;
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
 		  }
 		  if (j === 1 && this.notes[i].x === 230) {
 			this.notes[i].played = 1;
 			this.score++;
 			this.streak++;
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
 		  }
 		  if (k === 1 && this.notes[i].x === 290) {
 			this.notes[i].played = 1;
 			this.score++;
 			this.streak++;
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
 		  }
 		  if (l === 1 && this.notes[i].x === 350) {
 			this.notes[i].played = 1;
 			this.score++;
 			this.streak++;
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
-			ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			//ellipse(random() * width, random() * height, 5, 5);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
+			addflash(random() * width, random() * height);
 		  }
 		}
 		if (this.notes[i].y >= 400 && this.notes[i].played === 0) {
@@ -334,6 +386,8 @@ class Note {
   var playgame;
   var keyArray = [];
   var c = [];
+  var fl = [];
+  var ind = 0;
   var index = 0;
   var images = [];
   var eighth;
