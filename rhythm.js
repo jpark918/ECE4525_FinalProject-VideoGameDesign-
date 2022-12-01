@@ -605,11 +605,10 @@ function draw() {
     text("JavaS Beats is a rhythm game that tests the player's", 5, 215);
     text("ability to match button presses at a certain time.", 5, 230);
     text("Failure to time button presses will slowly bring", 5, 245);
-    text("your score down until you lose. The game will", 5, 260);
-    text("only allow a certain amount of misses in a certain", 5, 275);
-    text("time frame before you lose. You can recover", 5, 290);
-    text("your health and prevent loss by timing button", 5, 305);
-    text("presses.", 5, 320);
+    text("your score down. The more notes you get correct in a row,", 5, 260);
+    text("the higher your score multiplier you get.", 5, 275);
+    text("Try to get the highest score!", 5, 300);
+    
     text("Controls: Use ASDJKL keys to hit the note at the correct", 5, 350);
     text("timing in order to score points.", 5, 365);
     text("Return", 340, 380);
