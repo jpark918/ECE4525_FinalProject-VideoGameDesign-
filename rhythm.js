@@ -602,7 +602,7 @@ function draw() {
 
     textSize(15);
     fill(255);
-    text("Ripples is a rhythm game that tests the player's", 5, 215);
+    text("JavaS Beats is a rhythm game that tests the player's", 5, 215);
     text("ability to match button presses at a certain time.", 5, 230);
     text("Failure to time button presses will slowly bring", 5, 245);
     text("your score down until you lose. The game will", 5, 260);
