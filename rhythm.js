@@ -186,7 +186,7 @@ class flash {
 		}
 	  }
 	}
-    //This function handles the visual for combo streak
+	//This function handles the visual for combo streak
 	scorestreak() {
 	  noStroke();
 	  if (this.streak >= 10 && this.streak <= 29) {  //20 39
@@ -329,6 +329,7 @@ class flash {
 		circle(this.x + 170, this.y, 30);
 	  }
 	  fill(0);
+	  noStroke();
 	  text("A", this.x - 176, this.y + 7);
 	  text("S", this.x - 106, this.y + 7)
 	  text("D", this.x - 36, this.y + 7);
@@ -514,25 +515,16 @@ class flash {
 	  gamestate[0].execute(gamestate[0]);
 	  fill(255)
 	  textSize(30);
-	  //text("Thursday Night Thrillin'", 50, 100)
 	  text("JavaS. Beats", 120, 100)
-	  //text("Ripples", 150, 100)
 	  textSize(15);
 	  text("Created by:", 160, 350);
 	  textSize(20);
 	  text("Daniel Shin and Jihoon Park", 70, 380);
-	  // if (canvas.mouseClicked()) {
-	  //   text("x clicked" + target.x, 20, 20);W
-	  //   text("y clicked" + target.y, 20, 30);
-	  // }
 	  //mouseClicked();
 	  if (target.x >= 138 && target.x <= 233 && target.y >= 291 && target.y <= 299 && start === 0) {
-		//print("Instructions clicked");
 		start = 1;
 	  }
 	  else if (target.x >= 165 && target.y >= 256 && target.x <= 200 && target.y <= 270 && start === 0) {
-		//start = 2;
-		//startost = frameCount;
 		start = 5; //5 is unused condition in code
 		mode = 1;
 	  }
@@ -540,7 +532,6 @@ class flash {
 	  text("Instructions", 145, 300);
 	}
 	else if (start === 1) {
-	  //mouseClicked();.
 	  fill(255);
 	  rect(144, 50, 110, 100);
 	  if (currFrameCount < frameCount - 60) { //indicates which notes appear
@@ -608,7 +599,6 @@ class flash {
   
 	  textSize(15);
 	  fill(255);
-	  //text("THIS GAME IS SCUFFED AF", 0, 200);
 	  text("Ripples is a rhythm game that tests the player's", 5, 215);
 	  text("ability to match button presses at a certain time.", 5, 230);
 	  text("Failure to time button presses will slowly bring", 5, 245);
@@ -617,8 +607,6 @@ class flash {
 	  text("time frame before you lose. You can recover", 5, 290);
 	  text("your health and prevent loss by timing button", 5, 305);
 	  text("presses.", 5, 320);
-	  //text("This platformer/music game?? will be created by", 0, 20);
-	  // text("Daniel and Jihoon", 0, 40);
 	  text("Controls: Use ASDJKL keys to hit the note at the correct", 5, 350);
 	  text("timing in order to score points.", 5, 365);
 	  text("Return", 340, 380);
@@ -627,7 +615,6 @@ class flash {
 	  }
 	}
 	else if (start === 2) {
-	  //text("I AM GAMING", 0, 200);
 	  images = [];
 	  c = [];
 	  if (sel === 0) {
@@ -659,16 +646,12 @@ class flash {
 		line(370, 100, 370, 160); //left
 		line(390, 100, 390, 160);//right
 		line(370, 165, 390, 165); //bot bar
-		//line(200, 200, 260, 200);
-  
-		//text("framecount: " + frameCount, 200, 200);
 		if (frameCount === 7050 + startost + 19) {
 		  song.stop();
 		  gameover = 1;
 		}
 	  }
 	  else if (sel === 1) {
-		//print(frameCount + " " + startost);
 		if (frameCount === startost + 63) {
 		  song2.play();
 		}
@@ -697,7 +680,6 @@ class flash {
 		line(370, 100, 370, 160); //left
 		line(390, 100, 390, 160);//right
 		line(370, 165, 390, 165); //bot bar
-		//text("framecount: " + frameCount, 200, 200);
 		if (frameCount === 7150 + startost + 63) {
 		  song2.stop();
 		  gameover = 1;
@@ -779,13 +761,6 @@ class flash {
 		fill(0);
 		text("L", 344, 355);
 	  }
-	  //fill(0);
-	  //text("A", 44, 355);
-	  //text("S", 104, 355);
-	  //text("D", 164, 355);
-	  //text("J", 224, 355);
-	  //text("K", 284, 355);
-	  //  text("L", 344, 355);
 	  if (gameover === 1) {
 		background(0);
 		fill(255);
